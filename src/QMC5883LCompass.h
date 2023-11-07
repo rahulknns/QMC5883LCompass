@@ -8,9 +8,9 @@
 class QMC5883LCompass{
 	
   public:
-	TwoWire* _wire;
+	TwoWire _wire;
     QMC5883LCompass();
-	void init(_wire);
+	void init(TwoWire&  wire);
     void setADDR(byte b);
     void setMode(byte mode, byte odr, byte rng, byte osr);
 	void setMagneticDeclination(int degrees, uint8_t minutes);
@@ -38,7 +38,7 @@ class QMC5883LCompass{
 	bool _smoothUse = false;
 	byte _smoothSteps = 5;
 	bool _smoothAdvanced = false;
-    byte _ADDR = 0x0D;
+    byte _ADDR = 0x1E;
 	int _vRaw[3] = {0,0,0};
 	int _vHistory[10][3];
 	int _vScan = 0;
